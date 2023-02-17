@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('../partials/header')%>
+    <link rel="stylesheet" href="../styles/styleC.css" />
+    <link rel="stylesheet" href="../styles/img.css" />
+    <% for(i=0; i < post.length; i++) { %>
+    <title><%= post[i].handle%></title>
+    <%}%>
+
+  </head>
+  <body>
+    <%- include('../partials/Nav')%> <%- include('../partials/navegacion')%>
+
+    <div
+      class="container d-felx justify-content-center aling-items-center h-100"
+    >
+      <div class="row mt-5 mb-5">
+        <% for(i=0; i < post.length; i++) { %>
+        <div class="col-md-4">
+          <div
+            class="card mb-5 text-center bg-dark animate__animated animate__fadeInUp"
+          >
+            <span
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Ver imagen completa"
+            >
+              <a
+                data-bs-toggle="modal"
+                data-bs-target="#p<%= post[i].id%>"
+                href="#!"
+              >
+                <div class="overflow">
+    
+                    <img
+                    class="img-fluid card-img-top ful-Img"
+                    id="fullImg"
+                    src="../img/<%= post[i].banner.portada%>"
+                    alt=""
+                  />
+                </div>
+              </a>
+            </span>
+
+            <div class="card-body text-light">
+              <h4 class="card-title"><%= post[i].titulo%></h4>
+              <p class="card-text"><%= post[i].descripcion%></p>
+            </div>
+          </div>
+        </div>
+        <%}%>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <% for(i=0; i < post.length; i++) { %>
+    <div
+      class="modal fade"
+      id="p<%= post[i].id%>"
+      tabindex="-1"
+      aria-labelledby="p<%= post[i].id%>Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+          <div class="ratio ratio-16x9">
+            <iframe src="<%= post[i].banner.video%>" width="640" height="480" allow="autoplay" allowfullscreen="true"></iframe>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <%}%>
+
+    <!-- Modal Galery End -->
+  </body>
+  <%- include('../partials/footer')%>
+</html>
