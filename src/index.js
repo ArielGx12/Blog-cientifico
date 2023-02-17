@@ -27,6 +27,6 @@ app.use(rutas);
 app.use(express.static(join(__dirname, 'public')))
 
 //Puerto del servidor
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 console.log("This server is running successfully on port 3000. In your browser, type 'localhost:3000' for view page ");
 
