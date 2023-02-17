@@ -8,6 +8,7 @@ import rutas from "./Routes/index.js";
 
 //inicializando servidor
 const app = express();
+const port = process.env.PORT || 3000;
 
 //ajustando directorios de carpetas
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -27,6 +28,6 @@ app.use(rutas);
 app.use(express.static(join(__dirname, 'public')))
 
 //Puerto del servidor
-app.listen(process.env.PORT || 3000);
-console.log("This server is running successfully on port 3000. In your browser, type 'localhost:3000' for view page ");
+app.listen(port);
+console.log("Servidor en el puerto", port);
 
