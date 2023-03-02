@@ -1,11 +1,12 @@
 import express from "express";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
-import { config } from "process";
+import { PORT } from "./config.js";
 
 
 //importacion de las rutas
 import rutas from "./Routes/index.js";
+import { PORT } from "./config.js";
 
 //inicializando servidor
 const app = express();
@@ -29,6 +30,6 @@ app.use(rutas);
 app.use(express.static(join(__dirname, 'public')))
 
 //Puerto del servidor
-app.listen();
-console.log("Servidor en el puerto", port);
+app.listen(PORT);
+console.log("Servidor en el puerto", PORT);
 
